@@ -4,12 +4,12 @@
 \alias{CSanalysis}
 \title{Connectivity Score Analysis.}
 \usage{
-CSanalysis(refMat, querMat, type, ...)
+CSanalysis(querMat, refMat, type, ...)
 }
 \arguments{
-\item{refMat}{Reference matrix (Rows = genes and columns = compounds)}
+\item{querMat}{Query matrix (Rows = genes and columns = compounds)}
 
-\item{querMat}{Query matrix}
+\item{refMat}{Reference matrix}
 
 \item{type}{Type of Factor Analysis or Zhang & Gant ( \code{"CSfabia"}, \code{"CSmfa"}, \code{"CSpca"}, \code{"CSsmfa"} or \code{"CSzhang"})}
 
@@ -37,7 +37,7 @@ Mat2 <- dataSIM[,-c(1:6)]
 ZHANG_analysis <- CSanalysis(Mat1,Mat2,"CSzhang")
 }
  
-\dontrun{
+\donttest{
 data("dataSIM",package="CSFA")
 Mat1 <- dataSIM[,c(1:6)]
 Mat2 <- dataSIM[,-c(1:6)]

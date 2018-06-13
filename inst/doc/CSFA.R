@@ -17,28 +17,28 @@
 #  library(CSFA)
 #  data("dataSIM",package="CSFA")
 #  	
-#  refMat <- dataSIM[,c(1:6)]
-#  querMat <- dataSIM[,-c(1:6)]
+#  querMat <- dataSIM[,c(1:6)]
+#  refMat <- dataSIM[,-c(1:6)]
 
 ## ----ZG,echo=TRUE,eval=FALSE,cache=FALSE,fig.keep="high",fig.pos='H',out.width="11cm",fig.align='center',fig.cap="CSanalysis Graphs for CSzhang"----
-#  out_ZG <- CSanalysis(refMat,querMat,"CSzhang",plot.type="sweave")
+#  out_ZG <- CSanalysis(querMat,refMat,"CSzhang",plot.type="sweave")
 
 ## ----MFA_hidden,echo=FALSE,eval=FALSE,cache=FALSE,fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSanalysis Graphs for CSmfa"----
-#  out_MFA <- CSanalysis(refMat,querMat,"CSmfa",plot.type="sweave",which=c(),
+#  out_MFA <- CSanalysis(querMat,refMat,"CSmfa",plot.type="sweave",which=c(),
 #  		profile.type="cmpd",gene.thresP=2.3,gene.thresN=-2.3,component.plot=1,
 #  		column.interest=c(21,22,23))
 
 ## ----MFA,echo=TRUE,eval=FALSE,cache=FALSE,fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSanalysis Graphs for CSmfa"----
-#  out_MFA <- CSanalysis(refMat,querMat,"CSmfa",plot.type="sweave",which=c(2,3,4,7),
+#  out_MFA <- CSanalysis(querMat,refMat,"CSmfa",plot.type="sweave",which=c(2,3,4,7),
 #  		profile.type="cmpd",gene.thresP=2.3,gene.thresN=-2.3,component.plot=1,
 #  		column.interest=c(21,22,23))
 
 ## ----MFA2,echo=TRUE,eval=FALSE,cache=FALSE,fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSanalysis Graphs for CSmfa"----
-#  out_MFA <- CSanalysis(refMat,querMat,"CSmfa",plot.type="sweave",which=c(5),
+#  out_MFA <- CSanalysis(querMat,refMat,"CSmfa",plot.type="sweave",which=c(5),
 #  		component.plot=1,column.interest=c(1,2,3),result.available=out_MFA)
 
 ## ----MFA3,echo=TRUE,eval=FALSE,cache=FALSE,fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSanalysis Graphs for CSfma"----
-#  out_MFA <- CSanalysis(refMat,querMat,"CSmfa",plot.type="sweave",which=c(7),
+#  out_MFA <- CSanalysis(querMat,refMat,"CSmfa",plot.type="sweave",which=c(7),
 #  		profile.type="gene",component.plot=1,column.interest=c(1,2,3),
 #  		row.interest=c(846,871,4,6),result.available=out_MFA)
 
@@ -48,9 +48,9 @@
 #  color.columns[c(29,30,31)] <- "red"
 #  	
 #  set.seed(8956)
-#  out_FABIA <- CSanalysis(refMat,querMat,"CSfabia",plot.type="sweave",which=c(),
+#  out_FABIA <- CSanalysis(querMat,refMat,"CSfabia",plot.type="sweave",which=c(),
 #  		color.columns=color.columns,
-#  		legend.names=c("References","SP Connected"),
+#  		legend.names=c("Queries","SP Connected"),
 #  		legend.cols=c("blue","red"), component.plot=c(1,2),
 #  		gene.thresP=2,gene.thresN=-2)
 
@@ -62,14 +62,14 @@
 #  set.seed(8956)
 #  out_FABIA <- CSanalysis(refMat,querMat,"CSfabia",plot.type="sweave",which=c(2,5),
 #  		color.columns=color.columns,
-#  		legend.names=c("References","SP Connected"),
+#  		legend.names=c("Queries","SP Connected"),
 #  		legend.cols=c("blue","red"), component.plot=c(1,2),
 #  		gene.thresP=2,gene.thresN=-2)
 
 ## ----CSpermute_compute,eval=FALSE,echo=TRUE,cache=FALSE------------------
-#  out_MFA <- CSpermute(refMat,querMat,CSresult=out_MFA,B=250,method.adjust="BH",
+#  out_MFA <- CSpermute(querMat,refMat,CSresult=out_MFA,B=250,method.adjust="BH",
 #  		which=c(),verbose=FALSE,MultiCores=TRUE)
-#  out_ZG <- CSpermute(refMat,querMat,CSresult=out_ZG,B=250,method.adjust="BH",
+#  out_ZG <- CSpermute(querMat,refMat,CSresult=out_ZG,B=250,method.adjust="BH",
 #  		which=c(),verbose=FALSE,MultiCores=TRUE)
 #  
 
@@ -117,11 +117,11 @@
 #  ## cWP-6 0.5468158 0.003984064       0.03707393     21        31
 
 ## ----CSpermuteplots,echo=TRUE,eval=FALSE,cache=FALSE,message=FALSE,results='hide',fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSpermute graphs for MFA result"----
-#  out_MFA <- CSpermute(refMat,querMat,out_MFA,B=250,method.adjust="BH",
+#  out_MFA <- CSpermute(querMat,refMat,out_MFA,B=250,method.adjust="BH",
 #  		which=c(1,2),cmpd.hist=c(23,99),plot.type="sweave")
 
 ## ----CSpermuteplots2,echo=TRUE,eval=FALSE,cache=FALSE,message=FALSE,results='hide',fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="CSpermute graphs for MFA result"----
-#  out_MFA <- CSpermute(refMat,querMat,out_MFA,B=250,method.adjust="BH",
+#  out_MFA <- CSpermute(querMat,refMat,out_MFA,B=250,method.adjust="BH",
 #  		which=c(3,4),cmpd.hist=c(23,99),plot.type="sweave")
 
 ## ----CScompare_hidden,echo=FALSE,eval=FALSE,cache=FALSE,message=FALSE,fig.keep="high",fig.show='hold',fig.pos='H',out.width='9cm',out.height='10cm',fig.align='left',fig.cap="Compare CSresults"----

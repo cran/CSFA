@@ -5,25 +5,23 @@
 \alias{CSanalysis,matrix,matrix,CSzhang-method}
 \title{"CSzhang"}
 \usage{
-\S4method{CSanalysis}{matrix,matrix,CSzhang}(refMat, querMat,
-  type = "CSzhang", nref = NULL, nquery = NULL, ord.query = TRUE,
-  ntop.scores = 20, which = c(1), color.query = NULL,
-  legend.names = NULL, legend.cols = NULL, legend.pos = "topright",
+\S4method{CSanalysis}{matrix,matrix,CSzhang}(querMat, refMat,
+  type = "CSzhang", nquery = NULL, nref = NULL, ntop.scores = 20,
+  which = c(1), color.ref = NULL, legend.names = NULL,
+  legend.cols = NULL, legend.pos = "topright", labels = TRUE,
   result.available = NULL, result.available.update = FALSE,
   plot.type = "device", basefilename = NULL)
 }
 \arguments{
-\item{refMat}{Reference matrix (Rows = genes and columns = compounds)}
+\item{querMat}{Query matrix (Rows = genes and columns = compounds)}
 
-\item{querMat}{Query matrix}
+\item{refMat}{Reference matrix}
 
 \item{type}{\code{"CSzhang"}}
 
-\item{nref}{\emph{Zhang Parameter:} Number of top up- and downregulated genes in reference signature. If \code{NULL}, all rows (genes) are used.}
+\item{nquery}{\emph{Zhang Parameter:} Number of top up- and downregulated genes in query signature. If \code{NULL}, all rows (genes) are used.}
 
-\item{nquery}{\emph{Zhang Parameter:} Number of top up- and downregulated genes in query signature. If \code{NULL}, all rows (genes) are used. (Note that \eqn{nref >= nquery})}
-
-\item{ord.query}{\emph{Zhang Parameter:} Logical value. Should the query signature be treated as ordered?}
+\item{nref}{\emph{Zhang Parameter:} Number of top up- and downregulated genes in reference signature. If \code{NULL}, all rows (genes) are used. (Note that \eqn{nquery >= nref})}
 
 \item{ntop.scores}{\emph{Zhang Parameter:} Number of top positive and negative CS to be reported first.}
 
@@ -32,13 +30,15 @@
 \item Zhang and Gant Scores Plot
 }}
 
-\item{color.query}{Vector of colors for the query columns. You can use this option to highlight columns(compounds) of interest in the CS plot. (This does not include the reference columns since they are not included in the CS plot.)}
+\item{color.ref}{Vector of colors for the reference columns. You can use this option to highlight columns(compounds) of interest in the CS plot. (This does not include the query columns since they are not included in the CS plot.)}
 
-\item{legend.names}{Option to draw a legend (about the highlights in \code{color.query}) in the CS plot. If \code{NULL}, no legend will be drawn.}
+\item{legend.names}{Option to draw a legend (about the highlights in \code{color.ref}) in the CS plot. If \code{NULL}, no legend will be drawn.}
 
 \item{legend.cols}{Colors to be used for the \code{legend.names}.}
 
 \item{legend.pos}{Position of the legend in all requested plots, can be \code{"topright"}, \code{"topleft"}, \code{"bottomleft"}, \code{"bottomright"}, \code{"bottom"}, \code{"top"}, \code{"left"}, \code{"right"}, \code{"center"}.}
+
+\item{labels}{Boolean value (default=TRUE) to use column labels inside the ZG plot.}
 
 \item{result.available}{You can a previously returned object by \code{CSanalysis} in order to only draw graphs, not recompute the scores. If this object also contains the permutation object, in the score plot the values with a (adjusted) pvalue smaller than 0.05 will be colored purple.}
 
@@ -52,5 +52,5 @@
 An object of the S4 Class \code{\link{CSresult-class}}. The CS slot will also contain the top positive and negative scores as well as the top p-values. The GS slot will be empty for Zhang and Gant.
 }
 \description{
-Compute the Connectivity Scores by Zhang and Gant (2008). One or multiple reference compounds are possible in this analysis.
+Compute the Connectivity Scores by Zhang and Gant (2008). One or multiple query compounds are possible in this analysis. In the case of multiple query compounds, the average of each pairwise score is taken.
 }
